@@ -22,6 +22,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 // Booleans
 int bState = 0;
 int pbState = 0;
+bool press = false;
 
 // Arrays for initializing things
 const int inputs[7] = {1, 2, 3, 6, 7, 8, 9};
@@ -64,12 +65,14 @@ void loop()
   bState = digitalRead(button1);
   if (bState != pbState)
   {
-    //pbState = bState;
-    Keyboard.print("S/O one day.");
+    // pbState = bState;
+    press = true;
   }
 
-  else
+  if (press == true && digitalRead(button1) == LOW)
   {
+    press = false;
+    Keyboard.print("S/O one day.");
     pbState = 0;
   }
 }
