@@ -63,6 +63,13 @@ void setup()
 void loop()
 {
   bState = digitalRead(button1);
+
+  for (size_t i = 0; i < count; i++)
+  {
+    /* code */
+  }
+  
+
   if (bState != pbState)
   {
     // pbState = bState;
@@ -75,4 +82,10 @@ void loop()
     Keyboard.print("S/O one day.");
     pbState = 0;
   }
+}
+
+void soCuts(dButton)
+{
+  const int SOs[4] = {"S/O one day.", "S/O 2-3 days.", "S/O 3-5 days.", "S/O 3-5 days.", "S/O 5-7 days."}
+  Keyboard.print(SOs[dButton]);
 }
